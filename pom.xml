@@ -30,6 +30,10 @@
 		<jacoco.version>0.8.5</jacoco.version>
 		<spring-format.version>0.0.19</spring-format.version>
 		<selenium.version>3.141.59</selenium.version>
+		
+  		<sonar.projectKey>antromcac_DP2-1920-G2-15</sonar.projectKey>
+  		<sonar.organization>antromcac</sonar.organization>
+  		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
 
 	<dependencies>
@@ -272,7 +276,7 @@
 			<plugin>
 				<groupId>org.sonarsource.scanner.maven</groupId>
 				<artifactId>sonar-maven-plugin</artifactId>
-				<version>3.2</version>
+				<version>3.7</version>
 			</plugin>
 		</plugins>
 	</build>
