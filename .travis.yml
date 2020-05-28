@@ -5,7 +5,7 @@ services:
   - mysql
 addons:
   sonarcloud:
-    organization: "org.springframework.samples:spring-petclinic"
+    organization: "antromcac"
     token:
       secure: "IHOekauYSXlaVxmcevv5AkEa0YcSuTXb+WcV116qX4LrFTJiudZO+pcTunFSJH+L9oozDDAzjalAzPkwj9GCGS/SMTjDMhEH9ZXI4Y8eO2du4qHdt1F9mjXBgKSrokGX3VFxPrRNg5ehWrwUypEUWiV7henRqr8UpDvVUHL0OP0Q2KoCdozRYsJHkPDbW5pHrOsAwRqrhwmHiPvqf95uxlwf0CL0zI6Oyv0Mrp0njE0WlaiCmqt3yuxXeblOQQTAxJOqIshhrMn84V9BmhsYaBmy3L9XbjmwjbwTodVzhgM9YS7sxxgD5TZDQzJR0hes4Mn7qdiwA0Tfh1q0jTpMOoIUOTHfPxQeRl9AGas4y8xOlC+B4ofyDL//kuOrsEMyhuu7WSi/be5Iab7438Ecdhyb8hRXq/bOyZtKcWoSKPs6RzrPsD3es1eGSu11/dHmpEnYTUCc4ZFj43ODtXgUA2WBrXKcYuavWcP+PUkK3lbzw+udDoxumLL1VjLU+sPFMzAgJtWgxQ04AwZH3PSIoIcWgTYxMR4EmmMhpN0U6XSWWrwi0Gkeivs2nr/ZBBylWwBU1RQn5+jCqbF9JhDJuswmJSGUKVApqzkIX3OJKwng6Z0yal9i6f5E1iBqztl6SEsqLt/ceBZP+16DygKfDWA+0njmfRmWd9FHSW59ASA="
  # encrypted value of your token
