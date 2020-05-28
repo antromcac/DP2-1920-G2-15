@@ -14,7 +14,6 @@
             <th style="width: 150px;">Symptoms</th>
             <th style="width: 200px;">Severity</th>
             <th>Cure</th>
-           <!-- <th>Pet</th> --> 
             <th>Actions</th>
         </tr>
         </thead>
@@ -34,10 +33,6 @@
                     <c:out value="${disease.cure}"/>
                 </td>
 
-                <!-- <td>
-                    <c:out value="${disease.pet}"/>
-                </td> -->
-                
                   <td>
                     <spring:url value="/diseases/{diseaseId}" var="diseaseUrl">
                         <spring:param name="diseaseId" value="${disease.id}"/>
