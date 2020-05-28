@@ -38,7 +38,7 @@ public class DiseaseService {
 	public Collection<Disease> findAll() {
 		return this.diseaseRepository.findAll();
 	}
-
+    @CacheEvict(cacheNames = "AllDiseases",allEntries = true)
 	public void delete(Disease disease) {
 		
 		this.diseaseRepository.delete(disease);
