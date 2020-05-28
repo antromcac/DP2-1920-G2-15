@@ -38,14 +38,12 @@ public class DiseaseServiceTests{
 	@Autowired
 	protected DiseaseService diseaseService;
 
-	//FindbyId positive
+	
 	@Test
 	void shouldFindDiseaseById() {
-		Disease disease = this.diseaseService.findDiseaseById(1);
-		assertThat(disease.getId()).isEqualTo(1);
+		assertThat(this.diseaseService.findDiseaseById(1).getId()).isEqualTo(1);
 
 	}
-	//FindbyId negative
 	@ParameterizedTest
 	@ValueSource(ints = {-10,-40} )
 	void shouldFindDiseaseByIdNegative(int argument){
@@ -55,23 +53,13 @@ public class DiseaseServiceTests{
 	@Test
 	void shouldFindDiseaseAll() {
 
-		Collection<Disease> diseases = this.diseaseService.findAll();
+		assertThat(EntityUtils.getById(this.diseaseService.findAll(), Disease.class, 1).getCure()).isEqualTo("malisimo de la muerte");
+		assertThat(EntityUtils.getById(this.diseaseService.findAll(), Disease.class, 4).getSeverity()).isEqualTo("MEDIUM");
 
-		Disease disease1 = EntityUtils.getById(diseases, Disease.class, 1);
-		assertThat(disease1.getCure()).isEqualTo("malisimo de la muerte");
-		Disease disease4 = EntityUtils.getById(diseases, Disease.class, 4);
-		assertThat(disease4.getSeverity()).isEqualTo("MEDIUM");
 
 	}
 	
-	
-	//Positive Insert
-	@Test
-	void shouldInsertDisease() {
-		Disease diseases = this.diseaseService.findDiseaseById(1);
-		Collection<Disease> found = this.diseaseService.findAll();
-		int count = found.size();
-
+	public Disease Insert() {
 		final Disease disease = new Disease();
 		final Pet pet = new Pet();
 		pet.setId(1);
@@ -79,48 +67,43 @@ public class DiseaseServiceTests{
 		disease.setCure("cure");
 		disease.setSymptoms("esta mal");
 		disease.setPet(pet);
-
+		return disease;
+	}
+	
+	@Test
+	void shouldInsertDisease() {
+		final Disease disease = Insert();
 		this.diseaseService.saveDisease(disease);
 		assertThat(disease.getId().longValue()).isNotEqualTo(0);
-
-		diseases = this.diseaseService.findDiseaseById(1);
-		assertThat(diseases.getId().longValue()).isNotEqualTo(count + 1);
+		assertThat(this.diseaseService.findDiseaseById(1).getId().longValue()).isNotEqualTo(this.diseaseService.findAll().size() + 1);
 	}
-	//Negative Insert
 	@Test
 	public void shouldInsertNegativeDisease(){
 		
-		Disease d = new Disease(); 
-		
-		d.setCure("Probando cura");
+		final Disease d = Insert();
 		d.setSeverity("");
-		d.setSymptoms("malisimo");
-		String s = "LOW|MEDIUM|HIGH";
 		Validator validator = createValidator();
 		Set<ConstraintViolation<Disease>> constraintViolations =  validator.validate(d); 
 		assertThat(constraintViolations.size()).isEqualTo(1); 
 		ConstraintViolation<Disease> violation =   constraintViolations.iterator().next();
 		assertThat(violation.getPropertyPath().toString()).isEqualTo("severity"); 
-		assertThat(violation.getMessage()).isEqualTo("must match "+s) ; 
-		
+		assertThat(violation.getMessage()).isEqualTo("must match LOW|MEDIUM|HIGH") ; 
 	}
-	//Update positive
+
 	@Test
 	@Transactional
 	void shouldUpdateDisease() {
-		Disease disease = this.diseaseService.findDiseaseById(1);
-		String oldSymptoms = disease.getSymptoms();
+		String oldSymptoms = this.diseaseService.findDiseaseById(1).getSymptoms();
 		String newSymptoms = oldSymptoms + "XXXXXXXX";
 
-		disease.setSymptoms(newSymptoms);
-		this.diseaseService.saveDisease(disease);
-		disease = this.diseaseService.findDiseaseById(1);
-		assertThat(disease.getSymptoms()).isEqualTo(newSymptoms);
+		this.diseaseService.findDiseaseById(1).setSymptoms(newSymptoms);
+		this.diseaseService.saveDisease(this.diseaseService.findDiseaseById(1));
+		assertThat(this.diseaseService.findDiseaseById(1).getSymptoms()).isEqualTo(newSymptoms);
 		
 	}
 
 	@ParameterizedTest
-	@ValueSource(ints = {1})
+	@ValueSource(ints = {1,4})
 	void shoulThrowExceptionUpdateDisease(int id){
 		Disease disease = this.diseaseService.findDiseaseById(id);
 		String newSymptoms = null;
@@ -133,12 +116,10 @@ public class DiseaseServiceTests{
 	@Test
 	void shouldDeletetDisease() {
 		Collection<Disease> found1 = this.diseaseService.findAll();
-		int count1 = found1.size();
-		Disease disease1 = this.diseaseService.findDiseaseById(1);
-		this.diseaseService.delete(disease1);
+		this.diseaseService.delete(this.diseaseService.findDiseaseById(1));
 		Collection<Disease> found2 = this.diseaseService.findAll();
-		int count2 = found2.size();
-		assertTrue(count2 < count1);
+		
+		assertTrue(found2.size() < found1.size());
 
 
 	}
@@ -146,7 +127,6 @@ public class DiseaseServiceTests{
 	@ParameterizedTest
 	@ValueSource(ints = {-16, -30})
 	void shouldThrowExceptionDeleteDisease(int id){
-		Disease disease1 = this.diseaseService.findDiseaseById(id);
-		Assertions.assertThrows(InvalidDataAccessApiUsageException.class, () -> {this.diseaseService.delete(disease1);});
+		Assertions.assertThrows(InvalidDataAccessApiUsageException.class, () -> {this.diseaseService.delete(this.diseaseService.findDiseaseById(id));});
 	}
 }
