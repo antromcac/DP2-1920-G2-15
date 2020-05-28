@@ -1,0 +1,117 @@
+{
+  "simulation": "petclinicRoom.TestPerformanceUpdateAndShow",
+  "simulationId": "testperformanceupdateandshow",
+  "start": 1590240650124,
+  "description": "",
+  "scenarios": ["RoomsUpdate", "RoomsShow"],
+  "assertions": [
+{
+  "path": "Home",
+  "target": "percentage of failed events",
+  "condition": "is less than or equal to",
+  "expectedValues": [5.0],
+  "result": true,
+  "message": "Home: percentage of failed events is less than or equal to 5.0",
+  "actualValue": [0.0]
+},
+{
+  "path": "Login",
+  "target": "percentage of failed events",
+  "condition": "is less than or equal to",
+  "expectedValues": [5.0],
+  "result": true,
+  "message": "Login: percentage of failed events is less than or equal to 5.0",
+  "actualValue": [0.0]
+},
+{
+  "path": "Logged",
+  "target": "percentage of failed events",
+  "condition": "is less than or equal to",
+  "expectedValues": [5.0],
+  "result": true,
+  "message": "Logged: percentage of failed events is less than or equal to 5.0",
+  "actualValue": [0.0]
+},
+{
+  "path": "Logged Redirect 1",
+  "target": "percentage of failed events",
+  "condition": "is less than or equal to",
+  "expectedValues": [5.0],
+  "result": true,
+  "message": "Logged Redirect 1: percentage of failed events is less than or equal to 5.0",
+  "actualValue": [0.0]
+},
+{
+  "path": "RoomsList",
+  "target": "percentage of failed events",
+  "condition": "is less than or equal to",
+  "expectedValues": [5.0],
+  "result": true,
+  "message": "RoomsList: percentage of failed events is less than or equal to 5.0",
+  "actualValue": [0.0]
+},
+{
+  "path": "RoomUpdateForm",
+  "target": "percentage of failed events",
+  "condition": "is less than or equal to",
+  "expectedValues": [5.0],
+  "result": true,
+  "message": "RoomUpdateForm: percentage of failed events is less than or equal to 5.0",
+  "actualValue": [0.0]
+},
+{
+  "path": "ShowRoom",
+  "target": "percentage of failed events",
+  "condition": "is less than or equal to",
+  "expectedValues": [5.0],
+  "result": true,
+  "message": "ShowRoom: percentage of failed events is less than or equal to 5.0",
+  "actualValue": [0.0]
+},
+{
+  "path": "RoomUpdated",
+  "target": "percentage of failed events",
+  "condition": "is less than or equal to",
+  "expectedValues": [5.0],
+  "result": true,
+  "message": "RoomUpdated: percentage of failed events is less than or equal to 5.0",
+  "actualValue": [0.0]
+},
+{
+  "path": "RoomUpdated Redirect 1",
+  "target": "percentage of failed events",
+  "condition": "is less than or equal to",
+  "expectedValues": [5.0],
+  "result": true,
+  "message": "RoomUpdated Redirect 1: percentage of failed events is less than or equal to 5.0",
+  "actualValue": [0.0]
+},
+{
+  "path": "Global",
+  "target": "max of response time",
+  "condition": "is less than",
+  "expectedValues": [50000.0],
+  "result": true,
+  "message": "Global: max of response time is less than 50000.0",
+  "actualValue": [10505.0]
+},
+{
+  "path": "Global",
+  "target": "mean of response time",
+  "condition": "is less than",
+  "expectedValues": [1200.0],
+  "result": true,
+  "message": "Global: mean of response time is less than 1200.0",
+  "actualValue": [346.0]
+},
+{
+  "path": "Global",
+  "target": "percentage of successful events",
+  "condition": "is greater than",
+  "expectedValues": [95.0],
+  "result": true,
+  "message": "Global: percentage of successful events is greater than 95.0",
+  "actualValue": [100.0]
+}
+  ]
+}
