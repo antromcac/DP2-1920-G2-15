@@ -20,7 +20,7 @@ public class RoomService {
 	}
 
 	@Transactional(readOnly = true)
-	public Room findRoomById(int id) {
+	public Room findRoomById(int id) throws DataAccessException {
 		return roomRepository.findById(id);
     }
 
@@ -36,7 +36,7 @@ public class RoomService {
 	}
     
     @Transactional
-	public void saveRoom(Room room) {
+	public void saveRoom(Room room) throws DataAccessException {
 		this.roomRepository.save(room);
 	}
 }

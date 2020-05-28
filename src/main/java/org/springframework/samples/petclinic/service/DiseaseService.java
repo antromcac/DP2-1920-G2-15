@@ -22,14 +22,14 @@ public class DiseaseService {
 	}
 
 	@Transactional(readOnly = true)
-	public Disease findDiseaseById(int id) {
+	public Disease findDiseaseById(int id) throws DataAccessException {
 		return diseaseRepository.findById(id);
     }
 	
 
 	@Transactional
 	@CacheEvict(cacheNames = "AllDiseases",allEntries = true)
-	public void saveDisease(Disease disease) {
+	public void saveDisease(Disease disease) throws DataAccessException {
 		this.diseaseRepository.save(disease);
 	}
 

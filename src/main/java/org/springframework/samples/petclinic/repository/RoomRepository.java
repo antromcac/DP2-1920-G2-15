@@ -7,12 +7,12 @@ import org.springframework.samples.petclinic.model.Room;
 
 public interface RoomRepository {
 
-	Room findById(int id);
+	Room findById(int id) throws DataAccessException;
 
-	Collection<Room> findAll();
+	Collection<Room> findAll() throws DataAccessException;
 
     void delete(Room room);
 
-    void save(Room room);
+    void save(Room room) throws DataAccessException;
 
 }
