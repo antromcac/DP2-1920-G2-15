@@ -126,7 +126,7 @@ public class RoomControllerE2ETest {
 				.andExpect(view().name("redirect:/rooms/{roomId}"));
 	}
 
-	// Update negative
+	
 	@WithMockUser(username = "admin1", authorities = { "admin" })
 	@Test
 	void testProcessUpdateRoomFormHasErrors() throws Exception {
@@ -145,7 +145,7 @@ public class RoomControllerE2ETest {
 
 	}
 
-	// Delete negative
+	
 	@WithMockUser(username = "admin1", authorities = { "admin" })
 	@Test
 	void testDeleteIncorrectId() throws Exception {

@@ -126,10 +126,12 @@ public class RoomServiceTests {
 
     @Test
     void shouldDeletetRoom() {
-    	Integer i = this.roomService.findAll().size();
-        Room room1 = this.roomService.findRoomById(5);
-        this.roomService.delete(room1);
-        assertTrue(this.roomService.findAll().size()!=i);
+    	
+    	Collection<Room> found1 = this.roomService.findAll();
+		this.roomService.delete(this.roomService.findRoomById(5));
+		
+		assertTrue(this.roomService.findAll().size() < found1.size());
+
      
 
     }

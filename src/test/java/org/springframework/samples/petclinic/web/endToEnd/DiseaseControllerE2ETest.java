@@ -129,7 +129,6 @@ public class DiseaseControllerE2ETest {
 				.andExpect(status().is3xxRedirection()).andExpect(view().name("redirect:/diseases/{diseaseId}"));
 	}
 
-	// Negative
 	@WithMockUser(username = "vet1", authorities = { "veterinarian" })
 	@Test
 	void testProcessUpdateDiseaseFormHasErrors() throws Exception {
@@ -149,7 +148,7 @@ public class DiseaseControllerE2ETest {
 
 	}
 
-	// DELETE NEGATIVE
+	
 	@WithMockUser(username = "vet1", authorities = { "veterinarian" })
 	@Test
 	void testDeleteIncorrectId() throws Exception {

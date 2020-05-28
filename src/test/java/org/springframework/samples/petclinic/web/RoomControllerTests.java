@@ -94,8 +94,6 @@ public class RoomControllerTests {
 				andExpect(view().name("redirect:/rooms/" + room.getId()));
 	}
 
-	//bien
-	//Negative
 	@WithMockUser(value = "spring")
     @Test
 	void testProcessCreationFormHasErrors() throws Exception {
@@ -138,7 +136,6 @@ public class RoomControllerTests {
 
 
 
-	//Negative
     @WithMockUser(value = "spring")
 	@Test
 	void testProcessUpdateRoomFormHasErrors() throws Exception {
@@ -190,7 +187,6 @@ public class RoomControllerTests {
   
 	  }
 	
-	//DELETE NEGATIVE
 	@WithMockUser(value = "spring")
 	@Test
 	void testDeleteIncorrectId() throws Exception {
