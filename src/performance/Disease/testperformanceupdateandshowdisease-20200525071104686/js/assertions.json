@@ -1,0 +1,117 @@
+{
+  "simulation": "petclinicDiseases.TestPerformanceUpdateAndShowDisease",
+  "simulationId": "testperformanceupdateandshowdisease",
+  "start": 1590390664686,
+  "description": "",
+  "scenarios": ["DiseaseUpdate", "DiseaseShow"],
+  "assertions": [
+{
+  "path": "Home",
+  "target": "percentage of failed events",
+  "condition": "is less than or equal to",
+  "expectedValues": [5.0],
+  "result": true,
+  "message": "Home: percentage of failed events is less than or equal to 5.0",
+  "actualValue": [0.0]
+},
+{
+  "path": "LoginForm",
+  "target": "percentage of failed events",
+  "condition": "is less than or equal to",
+  "expectedValues": [5.0],
+  "result": true,
+  "message": "LoginForm: percentage of failed events is less than or equal to 5.0",
+  "actualValue": [0.0]
+},
+{
+  "path": "Logged",
+  "target": "percentage of failed events",
+  "condition": "is less than or equal to",
+  "expectedValues": [5.0],
+  "result": true,
+  "message": "Logged: percentage of failed events is less than or equal to 5.0",
+  "actualValue": [0.0]
+},
+{
+  "path": "Logged Redirect 1",
+  "target": "percentage of failed events",
+  "condition": "is less than or equal to",
+  "expectedValues": [5.0],
+  "result": true,
+  "message": "Logged Redirect 1: percentage of failed events is less than or equal to 5.0",
+  "actualValue": [0.0]
+},
+{
+  "path": "DiseasesList",
+  "target": "percentage of failed events",
+  "condition": "is less than or equal to",
+  "expectedValues": [5.0],
+  "result": true,
+  "message": "DiseasesList: percentage of failed events is less than or equal to 5.0",
+  "actualValue": [0.0]
+},
+{
+  "path": "UpdateForm",
+  "target": "percentage of failed events",
+  "condition": "is less than or equal to",
+  "expectedValues": [5.0],
+  "result": true,
+  "message": "UpdateForm: percentage of failed events is less than or equal to 5.0",
+  "actualValue": [0.0]
+},
+{
+  "path": "ShowDiseaseUpdated",
+  "target": "percentage of failed events",
+  "condition": "is less than or equal to",
+  "expectedValues": [5.0],
+  "result": true,
+  "message": "ShowDiseaseUpdated: percentage of failed events is less than or equal to 5.0",
+  "actualValue": [0.0]
+},
+{
+  "path": "DiseaseUpdated",
+  "target": "percentage of failed events",
+  "condition": "is less than or equal to",
+  "expectedValues": [5.0],
+  "result": true,
+  "message": "DiseaseUpdated: percentage of failed events is less than or equal to 5.0",
+  "actualValue": [0.0]
+},
+{
+  "path": "DiseaseUpdated Redirect 1",
+  "target": "percentage of failed events",
+  "condition": "is less than or equal to",
+  "expectedValues": [5.0],
+  "result": true,
+  "message": "DiseaseUpdated Redirect 1: percentage of failed events is less than or equal to 5.0",
+  "actualValue": [0.0]
+},
+{
+  "path": "Global",
+  "target": "max of response time",
+  "condition": "is less than",
+  "expectedValues": [7000.0],
+  "result": true,
+  "message": "Global: max of response time is less than 7000.0",
+  "actualValue": [3870.0]
+},
+{
+  "path": "Global",
+  "target": "mean of response time",
+  "condition": "is less than",
+  "expectedValues": [1000.0],
+  "result": true,
+  "message": "Global: mean of response time is less than 1000.0",
+  "actualValue": [132.0]
+},
+{
+  "path": "Global",
+  "target": "percentage of successful events",
+  "condition": "is greater than",
+  "expectedValues": [95.0],
+  "result": true,
+  "message": "Global: percentage of successful events is greater than 95.0",
+  "actualValue": [100.0]
+}
+  ]
+}
