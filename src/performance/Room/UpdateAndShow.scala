@@ -96,7 +96,7 @@ class TestPerformanceUpdateAndShow extends Simulation {
 		).protocols(httpProtocol)
      	.assertions(
 			forAll.failedRequests.percent.lte(5),
-        	global.responseTime.max.lt(7000),    
+        	global.responseTime.max.lt(50000),    
         	global.responseTime.mean.lt(1200),
         	global.successfulRequests.percent.gt(95)
      )
