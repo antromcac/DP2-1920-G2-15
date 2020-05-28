@@ -63,6 +63,8 @@
                         <tr>
                             <th>Visit Date</th>
                             <th>Description</th>
+                             <th>Show Chip</th>
+                              <th>Update Chip</th>
                              <th>Disease</th>
                         </tr>
                         </thead>
