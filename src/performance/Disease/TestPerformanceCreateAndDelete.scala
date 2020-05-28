@@ -100,8 +100,7 @@ class TestPerformanceCreateAndDelete extends Simulation {
 				.formParam("symptoms", "Nueva enfermedad")
 				.formParam("severity", "LOW")
 				.formParam("cure", "Paracetamol")
-				.formParam("_csrf", "${stoken}")
-				.check(css("input[name=id]", "value").saveAs("id")))//Pillamos la id
+				.formParam("_csrf", "${stoken}"))
 	.pause(26)
 	}
 
@@ -118,14 +117,13 @@ class TestPerformanceCreateAndDelete extends Simulation {
 		
 		
 		
-		val deleteNewDisease=//repeat(3000,"id"){
+		val deleteNewDisease=repeat(3000,"id"){
 	
   
 		exec(http("DeleteNewDisease")
-			.get("/diseases/delete/${id}")//se mete la id
+			.get("/diseases/delete/${id}")
 			.headers(headers_0))
-		
-		//}
+		}
 		
 	}
 
@@ -145,7 +143,7 @@ class TestPerformanceCreateAndDelete extends Simulation {
 
 	setUp(
 		createDiseaseScn.inject(rampUsers(3000) during (100 seconds)),
-		deleteDiseaseScn.inject(rampUsers(100) during (100 seconds))
+		deleteDiseaseScn.inject(rampUsers(1) during (100 seconds))
 	).protocols(httpProtocol)
      .assertions(
         forAll.failedRequests.percent.lte(5),    
