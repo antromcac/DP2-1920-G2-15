@@ -87,6 +87,8 @@ INSERT INTO rooms(id,name, floor) VALUES (1,'Quirofano1',1);
 INSERT INTO rooms(id,name, floor) VALUES (2,'Quirofano2',1);
 INSERT INTO rooms(id,name, floor) VALUES (3,'Quirofano3',2);
 INSERT INTO rooms(id,name, floor) VALUES (4,'Quirofano4',2);
+INSERT INTO rooms(id,name, floor) VALUES (5,'Quirofano5',2);
+
 
 INSERT INTO room_medical_team(room_id, medical_team) VALUES (1,'Tijeras');
 INSERT INTO room_medical_team(room_id, medical_team) VALUES (1,'Pinzas');

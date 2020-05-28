@@ -78,6 +78,7 @@ INSERT IGNORE INTO rooms VALUES (1,'Quirofano1',1);
 INSERT IGNORE INTO rooms VALUES (2,'Quirofano2',1);
 INSERT IGNORE INTO rooms VALUES (3,'Quirofano3',2);
 INSERT IGNORE INTO rooms VALUES (4,'Quirofano4',2);
+INSERT IGNORE INTO rooms VALUES (5,'Quirofano5',2);
 
 INSERT IGNORE INTO room_medical_team VALUES (1,'Tijeras');
 INSERT IGNORE INTO room_medical_team VALUES (1,'Pinzas');

@@ -38,7 +38,6 @@ public class RoomServiceTests {
     @Autowired
     protected RoomService roomService;
 
-    // FindbyId positive
     @Test
     void shouldFindRoomById() {
         Room room = this.roomService.findRoomById(4);
@@ -46,7 +45,6 @@ public class RoomServiceTests {
 
     }
 
-    // FindbyId negative
     @ParameterizedTest
     @ValueSource(ints = { -10, -40 })
     void shouldFindRoomByIdNegative(int argument) {
@@ -66,7 +64,6 @@ public class RoomServiceTests {
     }
 
 
-    // Positive Insert
     @Test
     void shouldInsertRoom() {
         Room rooms = this.roomService.findRoomById(4);
@@ -88,7 +85,6 @@ public class RoomServiceTests {
         assertThat(rooms.getId().longValue()).isNotEqualTo(count + 2);
     }
 
-    // Negative Insert
     @Test
     public void shouldInsertNegativeRoom() {
 
@@ -103,7 +99,6 @@ public class RoomServiceTests {
 
     }
 
-    // Update positive
     @Test
     @Transactional
     void shouldUpdateRoom() {
@@ -131,8 +126,10 @@ public class RoomServiceTests {
 
     @Test
     void shouldDeletetRoom() {
-        Room room1 = this.roomService.findRoomById(1);
+    	Integer i = this.roomService.findAll().size();
+        Room room1 = this.roomService.findRoomById(5);
         this.roomService.delete(room1);
+        assertTrue(this.roomService.findAll().size()!=i);
      
 
     }
