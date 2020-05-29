@@ -1,0 +1,10 @@
+{
+  "simulation": "dp2.Booking",
+  "simulationId": "booking",
+  "start": 1590571393282,
+  "description": "",
+  "scenarios": ["List", "Create", "Update", "Delete"],
+  "assertions": [
+
+  ]
+}
