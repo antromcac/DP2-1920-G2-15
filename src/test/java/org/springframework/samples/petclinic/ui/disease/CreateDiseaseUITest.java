@@ -45,7 +45,7 @@ public class CreateDiseaseUITest {
         driver.findElement(By.id("password")).clear();
         driver.findElement(By.id("password")).sendKeys("v3t");
         driver.findElement(By.xpath("//button[@type='submit']")).click();
-        driver.findElement(By.xpath("//div[@id='main-navbar']/ul/li[2]/a/span[2]")).click();
+        driver.findElement(By.linkText("FIND OWNERS")).click();
         driver.findElement(By.xpath("//button[@type='submit']")).click();
         driver.findElement(By.linkText("George Franklin")).click();
         driver.findElement(By.linkText("Add Disease")).click();
