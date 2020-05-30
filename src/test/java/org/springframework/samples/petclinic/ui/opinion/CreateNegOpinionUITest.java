@@ -44,6 +44,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
      driver.get("http://localhost:"+port+"/");
      
      driver.findElement(By.linkText("LOGIN")).click();
+     Thread.sleep(500);
      driver.findElement(By.id("username")).clear();
      driver.findElement(By.id("username")).sendKeys("owner1");
      driver.findElement(By.id("password")).clear();
@@ -57,6 +58,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
      // }
      // assertEquals("owner1", driver.findElement(By.linkText("owner1")).getText());
      this.driver.findElement(By.xpath("//div[@id='main-navbar']/ul/li[3]/a/span[2]")).click();
+     Thread.sleep(500);
      driver.findElement(By.linkText("Add Opinion")).click();
      driver.findElement(By.id("comentary")).click();
      driver.findElement(By.id("comentary")).clear();
