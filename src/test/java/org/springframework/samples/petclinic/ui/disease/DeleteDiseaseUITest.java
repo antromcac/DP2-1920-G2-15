@@ -45,8 +45,8 @@ public class DeleteDiseaseUITest {
     driver.findElement(By.id("username")).clear();
     driver.findElement(By.id("username")).sendKeys("vet1");
     driver.findElement(By.xpath("//button[@type='submit']")).click();
-    driver.findElement(By.xpath("//div[@id='main-navbar']/ul/li[4]/a/span[2]")).click();
-    driver.findElement(By.xpath("(//a[contains(text(),'Delete')])[7]")).click();
+    driver.findElement(By.linkText("DISEASES")).click();
+    driver.findElement(By.xpath("//a[@href='/diseases/delete/7']")).click();
     assertFalse(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*//table\\[@id='diseasesTable'\\]/tbody/tr/td[\\s\\S]*$"));
   }
 
