@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.annotation.ReadOnlyProperty;
 import org.springframework.samples.petclinic.model.Booking;
 import org.springframework.samples.petclinic.repository.BookingRepository;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,7 @@ public class BookingService {
 	}
 
 	@Transactional
+	@ReadOnlyProperty
 	@Cacheable("bookings")
 	public Iterable<Booking> findAll() {
 		return this.bookingRepository.findAll();
@@ -36,6 +38,7 @@ public class BookingService {
 	}
 
 	@Transactional
+	@ReadOnlyProperty
 	public Optional<Booking> findById(final Integer id) {
 		return this.bookingRepository.findById(id);
 	}
