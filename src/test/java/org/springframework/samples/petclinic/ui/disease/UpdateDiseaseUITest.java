@@ -43,8 +43,8 @@ public class UpdateDiseaseUITest {
         driver.findElement(By.id("password")).clear();
         driver.findElement(By.id("password")).sendKeys("v3t");
         driver.findElement(By.xpath("//button[@type='submit']")).click();
-        driver.findElement(By.xpath("//div[@id='main-navbar']/ul/li[4]/a/span[2]")).click();
-        driver.findElement(By.linkText("Update")).click();
+        driver.findElement(By.linkText("DISEASES")).click();
+        driver.findElement(By.xpath("//a[@href='/diseases/1/edit']")).click();
         driver.findElement(By.id("symptoms")).click();
         driver.findElement(By.id("symptoms")).clear();
         driver.findElement(By.id("symptoms")).sendKeys("compra algo");
