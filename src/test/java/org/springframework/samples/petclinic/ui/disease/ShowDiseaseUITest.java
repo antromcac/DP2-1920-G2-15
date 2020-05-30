@@ -33,6 +33,7 @@ public class ShowDiseaseUITest {
       driver = new ChromeDriver();
       baseUrl = "https://www.google.com/";
       driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+     
     }
 
     @Test
@@ -44,8 +45,8 @@ public class ShowDiseaseUITest {
         driver.findElement(By.id("password")).clear();
         driver.findElement(By.id("password")).sendKeys("v3t");
         driver.findElement(By.xpath("//button[@type='submit']")).click();
-        driver.findElement(By.xpath("//div[@id='main-navbar']/ul/li[4]/a/span[2]")).click();
-        driver.findElement(By.linkText("Show")).click();
+        driver.findElement(By.linkText("DISEASES")).click();
+        driver.findElement(By.xpath("//a[@href='/diseases/1']")).click();
         assertEquals("compra paracetamol", driver.findElement(By.xpath("//td")).getText());
         assertEquals("LOW", driver.findElement(By.xpath("//tr[2]/td")).getText());
         assertEquals("malisimo de la muerte", driver.findElement(By.xpath("//tr[3]/td")).getText());
