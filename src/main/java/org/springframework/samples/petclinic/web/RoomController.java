@@ -6,7 +6,9 @@ import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.petclinic.model.Booking;
 import org.springframework.samples.petclinic.model.Room;
+import org.springframework.samples.petclinic.service.BookingService;
 import org.springframework.samples.petclinic.service.RoomService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -20,12 +22,14 @@ import org.springframework.web.servlet.ModelAndView;
 public class RoomController {
 
     private final RoomService roomService;
+    private final BookingService bookingService;
     
     private static final String VIEWS_ROOMS_CREATE_OR_UPDATE_FORM = "rooms/createOrUpdateRoomForm";
 
 	@Autowired
-	public RoomController(RoomService roomService) {
+	public RoomController(RoomService roomService, BookingService bookingService) {
 		this.roomService = roomService;
+		this.bookingService= bookingService;
 		
 	}
 
@@ -50,12 +54,19 @@ public class RoomController {
     @GetMapping(value = "/rooms/delete/{roomId}")
 	public String deleteDisease(@PathVariable("roomId") int roomId, ModelMap modelMap) {
     	
+    	for(Booking b: this.bookingService.findAll()) {
+    		if(b.getRoom().getId()==roomId) {
+    			this.bookingService.deleteBooking(b);
+    		}
+    	}
+    	
     	if(roomId<=0) {
 			return "redirect:/oups";
 		}
     	
     	Room room = roomService.findRoomById(roomId);
 		this.roomService.delete(room);
+	
 		modelMap.addAttribute("message", "Room succefully deleted!");
 		return "redirect:/rooms/roomsList";
     }
