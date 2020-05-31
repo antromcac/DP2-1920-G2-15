@@ -17,6 +17,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
+import org.springframework.samples.petclinic.service.BookingService;
 import org.springframework.samples.petclinic.service.RoomService;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import org.springframework.security.config.annotation.web.WebSecurityConfigurer;
@@ -45,6 +46,9 @@ public class RoomControllerTests {
 	
 	@Mock 	
 	private Room room;
+	
+	@MockBean
+	private BookingService bookingService;
 	
 	@Autowired
 	private MockMvc mockMvc;

@@ -79,7 +79,7 @@ public class DiseaseServiceTests{
 		assertThat(this.diseaseService.findDiseaseById(1).getId().longValue()).isNotEqualTo(this.diseaseService.findAll().size() + 1);
 	}
 	@Test
-	public void shouldInsertNegativeDisease(){
+	void shouldInsertNegativeDisease(){
 		
 		final Disease d = Insert();
 		d.setSeverity("");
