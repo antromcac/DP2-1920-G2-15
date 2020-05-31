@@ -23,7 +23,9 @@ public class ChipController {
 
 	private final ChipService	chipService;
 	private final PetService	petService;
-
+	
+	private static final String PET_ID = "petId";
+	private static final String OWNER_REDIRECT = "redirect:/owners/{ownerId}";
 	private static final String	VIEWS_CHIPS_CREATE_OR_UPDATE_FORM	= "chips/createOrUpdateChipForm";
 
 
@@ -44,7 +46,7 @@ public class ChipController {
 	public String initCreationForm(@PathVariable("petId") final int petId, final ModelMap model) {
 		final Chip chip = new Chip();
 		model.put("chip", chip);
-		model.put("petId", petId);
+		model.put(PET_ID, petId);
 		return ChipController.VIEWS_CHIPS_CREATE_OR_UPDATE_FORM;
 	}
 
@@ -52,15 +54,13 @@ public class ChipController {
 	public String processCreationForm(@PathVariable("ownerId") final int ownerId, @PathVariable("petId") final int petId, @Valid final Chip chip, final BindingResult result, final ModelMap model) {
 		if (result.hasErrors()) {
 			model.put("chip", chip);
-			model.put("petId", petId);
+			model.put(PET_ID, petId);
 			return ChipController.VIEWS_CHIPS_CREATE_OR_UPDATE_FORM;
 		} else {
-			System.out.println(petId);
 			Pet pet = this.petService.findPetById(petId);
-			System.out.println();
 			pet.setChip(chip);
 			this.chipService.saveChip(chip);
-			return "redirect:/owners/{ownerId}";
+			return OWNER_REDIRECT;
 		}
 	}
 
@@ -75,7 +75,7 @@ public class ChipController {
 	public String processUpdateForm(@PathVariable("ownerId") final int ownerId, @PathVariable("petId") final int petId, @PathVariable("chipId") final int chipId, @Valid final Chip chip, final BindingResult result, final ModelMap model) {
 		if (result.hasErrors()) {
 			model.put("chip", chip);
-			model.put("petId", petId);
+			model.put(PET_ID, petId);
 			return ChipController.VIEWS_CHIPS_CREATE_OR_UPDATE_FORM;
 		} else {
 
@@ -89,12 +89,7 @@ public class ChipController {
 			pet.setChip(chipToUpdate);
 			this.chipService.saveChip(chipToUpdate);
 
-			// Ahora pruebo a pillar de la base de datos el chip actualizado, a ver si ha
-			// cambiado
-
-			final Chip actualizado = this.chipService.findChipById(chipToUpdate.getId());
-			System.out.println(actualizado.getModel());
-			return "redirect:/owners/{ownerId}";
+			return OWNER_REDIRECT;
 		}
 	}
 
@@ -103,6 +98,6 @@ public class ChipController {
 		Chip chip = this.chipService.findChipById(chipId);
 		this.chipService.deleteChip(chip);
 		model.addAttribute("message", "Chip succefully deleted!");
-		return "redirect:/owners/{ownerId}";
+		return OWNER_REDIRECT;
 	}
 }
