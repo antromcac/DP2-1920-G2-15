@@ -47,7 +47,8 @@ public class DiseaseServiceTests{
 	@ParameterizedTest
 	@ValueSource(ints = {-10,-40} )
 	void shouldFindDiseaseByIdNegative(int argument){
-		Assertions.assertThrows(NullPointerException.class,()->{this.diseaseService.findDiseaseById(argument).getClass();} );
+		Disease disease = this.diseaseService.findDiseaseById(argument);
+		Assertions.assertThrows(NullPointerException.class,()->{disease.getClass();} );
 	}
 
 	@Test
@@ -109,7 +110,7 @@ public class DiseaseServiceTests{
 		String newSymptoms = null;
 		disease.setSymptoms(newSymptoms);
 		this.diseaseService.saveDisease(disease);
-		Assertions.assertThrows(NullPointerException.class, () -> {this.diseaseService.findDiseaseById(id).getSymptoms().isEmpty();});
+		Assertions.assertThrows(NullPointerException.class, () -> {disease.getSymptoms().isEmpty();});
 		
 	}
 
@@ -127,6 +128,7 @@ public class DiseaseServiceTests{
 	@ParameterizedTest
 	@ValueSource(ints = {-16, -30})
 	void shouldThrowExceptionDeleteDisease(int id){
-		Assertions.assertThrows(InvalidDataAccessApiUsageException.class, () -> {this.diseaseService.delete(this.diseaseService.findDiseaseById(id));});
+		Disease disease = this.diseaseService.findDiseaseById(id);
+		Assertions.assertThrows(InvalidDataAccessApiUsageException.class, () -> {this.diseaseService.delete(disease);});
 	}
 }

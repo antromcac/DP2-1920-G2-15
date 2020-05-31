@@ -40,9 +40,9 @@ public interface PetRepository {
 	 * Retrieve all <code>PetType</code>s from the data store.
 	 * @return a <code>Collection</code> of <code>PetType</code>s
 	 */
-	List<PetType> findPetTypes() throws DataAccessException;
+	List<PetType> findPetTypes();
 
-	Collection<Pet> findAll() throws DataAccessException;
+	Collection<Pet> findAll();
 
 
 	/**
@@ -51,13 +51,13 @@ public interface PetRepository {
 	 * @return the <code>Pet</code> if found
 	 * @throws org.springframework.dao.DataRetrievalFailureException if not found
 	 */
-	Pet findById(int id) throws DataAccessException;
+	Pet findById(int id);
 
 	/**
 	 * Save a <code>Pet</code> to the data store, either inserting or updating it.
 	 * @param pet the <code>Pet</code> to save
 	 * @see BaseEntity#isNew
 	 */
-	void save(Pet pet) throws DataAccessException;
+	void save(Pet pet);
 
 }

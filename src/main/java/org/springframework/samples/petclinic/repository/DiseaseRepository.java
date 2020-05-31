@@ -7,13 +7,13 @@ import org.springframework.samples.petclinic.model.Disease;
 
 public interface DiseaseRepository {
 
-	 Disease findById(int id) throws DataAccessException;
+	 Disease findById(int id);
 
 
-	void save(Disease disease) throws DataAccessException;
+	void save(Disease disease);
 
 
-	 Collection<Disease> findAll() throws DataAccessException;
+	 Collection<Disease> findAll();
 
 
 	void delete(Disease disease);

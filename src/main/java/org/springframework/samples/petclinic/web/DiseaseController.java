@@ -24,6 +24,7 @@ public class DiseaseController {
 	private final PetService petService;
 
 	private static final String VIEWS_DISEASES_CREATE_OR_UPDATE_FORM = "diseases/createOrUpdateDiseaseForm";
+	private static final String DISEASE = "disease";
 
 	@Autowired
 	public DiseaseController(DiseaseService diseaseService, final PetService petService) {
@@ -53,7 +54,7 @@ public class DiseaseController {
 	@GetMapping("/diseases/new/{petId}")
 	public String initCreationForm(@PathVariable("petId") final int petId, final ModelMap model) {
 		final Disease disease = new Disease();
-		model.put("disease", disease);
+		model.put(DISEASE, disease);
 		model.put("petId", petId);
 		return VIEWS_DISEASES_CREATE_OR_UPDATE_FORM;
 	}
@@ -63,7 +64,7 @@ public class DiseaseController {
 			BindingResult result, final ModelMap model) {
 
 		if (result.hasErrors()) {
-			model.put("disease", disease);
+			model.put(DISEASE, disease);
 			model.put("petId", petId);
 			return VIEWS_DISEASES_CREATE_OR_UPDATE_FORM;
 		} else {
@@ -82,7 +83,7 @@ public class DiseaseController {
 	@GetMapping(value = "/diseases/{diseaseId}/edit")
 	public String initUpdateForm(@PathVariable("diseaseId") final int diseaseId, final ModelMap model) {
 		final Disease disease = this.diseaseService.findDiseaseById(diseaseId);
-		model.put("disease", disease);
+		model.put(DISEASE, disease);
 		return VIEWS_DISEASES_CREATE_OR_UPDATE_FORM;
 	}
 
@@ -90,7 +91,7 @@ public class DiseaseController {
 	public String processUpdateForm(@Valid Disease disease, BindingResult result,
 			@PathVariable("diseaseId") final int diseaseId, final ModelMap model) {
 		if (result.hasErrors()) {
-			model.put("disease", disease);
+			model.put(DISEASE, disease);
 			return VIEWS_DISEASES_CREATE_OR_UPDATE_FORM;
 		} else {
 			Disease diseaseToUpdate = this.diseaseService.findDiseaseById(diseaseId);
