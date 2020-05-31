@@ -12,9 +12,7 @@ import java.util.stream.Collectors;
 import javax.validation.Valid;
 
 import org.springframework.samples.petclinic.model.Opinion;
-import org.springframework.samples.petclinic.service.AuthoritiesService;
 import org.springframework.samples.petclinic.service.OpinionService;
-import org.springframework.samples.petclinic.service.UserService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -32,12 +30,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class OpinionController {
 
+	private static final String		REDIRECT_LISTMINE					= "redirect:/opinions/listMine";
 	private static final String		VIEWS_OPINION_CREATE_OR_UPDATE_FORM	= "opinions/createOrUpdateOpinions";
 
 	private final OpinionService	opinionService;
 
 
-	public OpinionController(final OpinionService opinionService, final UserService userService, final AuthoritiesService authoritiesService) {
+	public OpinionController(final OpinionService opinionService) {
 		this.opinionService = opinionService;
 	}
 
@@ -81,7 +80,7 @@ public class OpinionController {
 			return OpinionController.VIEWS_OPINION_CREATE_OR_UPDATE_FORM;
 		} else {
 			model.put("message", "Opinion not found");
-			return "redirect:/opinions/listMine";
+			return OpinionController.REDIRECT_LISTMINE;
 		}
 	}
 
@@ -94,7 +93,7 @@ public class OpinionController {
 
 			this.opinionService.saveOpinion(opinion);                      //Guardarmos la opinion en el sistema
 
-			return "redirect:/opinions/listMine";
+			return OpinionController.REDIRECT_LISTMINE;
 		}
 	}
 
@@ -102,7 +101,7 @@ public class OpinionController {
 	public String listOpinion(final ModelMap modelMap) {
 		Iterable<Opinion> opinions = this.opinionService.findAll();
 		List<Opinion> opinionsList = new ArrayList<>();
-		opinions.forEach(x -> opinionsList.add(x));		// Introducimos las opinions en un list
+		opinions.forEach(opinionsList::add);				// Introducimos las opinions en un list
 		List<Opinion> ordered = opinionsList.stream().sorted(Comparator.comparing(Opinion::getPuntuation).reversed()).collect(Collectors.toList());		// Ordenamos las opinions en orden inverso 
 		modelMap.addAttribute("opinions", ordered);
 		modelMap.addAttribute("mine", true);				// Añadimos atributo para la vista.
@@ -122,14 +121,12 @@ public class OpinionController {
 	@GetMapping(value = "/opinions/{opinionId}/delete")
 	public String deleteOpinion(@PathVariable("opinionId") final Integer opinionId, final ModelMap modelMap) {
 		Optional<Opinion> op = this.opinionService.findOpinionById(opinionId);
-		String ret = "/exception";
 		if (op.isPresent()) {
 			this.opinionService.deleteOpinion(op.get());
-			ret = "redirect:/opinions/listMine";
 		} else {
 			modelMap.addAttribute("message", "Opinion not found.");
 		}
-		return "redirect:/opinions/listMine";
+		return OpinionController.REDIRECT_LISTMINE;
 	}
 
 }
