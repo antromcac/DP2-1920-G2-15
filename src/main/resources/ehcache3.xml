@@ -31,10 +31,16 @@
 	    <cache alias="AllDiseases" uses-template="default">
 	        <key-type>org.springframework.cache.interceptor.SimpleKey</key-type>
 	        <value-type>java.util.Collection</value-type>
-	    </cache>     
+	    </cache>
+	    
+	    <cache alias="owners" uses-template="default">
+	        <key-type>java.lang.String</key-type>
+	        <value-type>java.util.Collection</value-type>
+	    </cache>   
 	    
 	    <cache alias="bookings" uses-template="default">
 	        <key-type>org.springframework.cache.interceptor.SimpleKey</key-type>
 	        <value-type>java.lang.Iterable</value-type>
-	    </cache>    
+	    </cache>   
+  
     </config>
