@@ -64,9 +64,9 @@
                         <tr>
                             <th>Visit Date</th>
                             <th>Description</th>
+                             <sec:authorize access= "hasAuthority('veterinarian')">
                              <th>Show Chip</th>
                               <th>Update Chip</th>
-                               <sec:authorize access= "hasAuthority('veterinarian')">
                              <th>Disease</th>
                              </sec:authorize>
                         </tr>
