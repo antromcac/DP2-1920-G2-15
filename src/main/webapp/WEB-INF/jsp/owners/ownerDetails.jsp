@@ -92,7 +92,7 @@
                                 </spring:url>
                                 <a href="${fn:escapeXml(visitUrl)}">Add Visit</a>
                             </td>
-                            
+                            <sec:authorize access= "hasAuthority('veterinarian')">
                             <c:if test="${pet.chip != null}">
                             	<td>
                                 	<spring:url value="/owners/{ownerId}/pets/{petId}/chips/{chipId}" var="chipUrl">
@@ -120,7 +120,6 @@
                                     <a href="${fn:escapeXml(chipUrl)}">Add Chip</a>
                                 </td>
                             </c:if>
-                            <sec:authorize access= "hasAuthority('veterinarian')">
                             <td>
                                 <spring:url value="/diseases/new/{petId}" var="diseaseUrl">
                                     <spring:param name="diseaseId" value="${disease.id}"/>
@@ -129,8 +128,7 @@
                                 <a href="${fn:escapeXml(diseaseUrl)}">Add Disease</a>
                           </td>
                         </sec:authorize>
-                        </tr>
-                         
+                        </tr> 
                     </table>
                 </td>
             </tr>

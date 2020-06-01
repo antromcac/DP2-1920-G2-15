@@ -65,7 +65,7 @@ public class ChipControllerTests {
 		given(this.petService.findPetById(TEST_PET_ID)).willReturn(testPet);
 	}
 	
-	@WithMockUser(value = "spring")
+	@WithMockUser(value = "spring", authorities = "veterinarian")
     @Test
     void testInitCreationForm() throws Exception {
 		mockMvc.perform(get("/owners/{ownerId}/pets/{petId}/chips/new", TEST_OWNER_ID, TEST_PET_ID))
@@ -74,7 +74,7 @@ public class ChipControllerTests {
 				.andExpect(view().name("chips/createOrUpdateChipForm"));
 	}
 	
-	@WithMockUser(value = "spring")
+	@WithMockUser(value = "spring", authorities = "veterinarian")
 	@Test
 	void testProcessCreationFormSuccess() throws Exception {
 		mockMvc.perform(post("/owners/{ownerId}/pets/{petId}/chips/new", TEST_OWNER_ID, TEST_PET_ID)
@@ -86,7 +86,7 @@ public class ChipControllerTests {
 		.andExpect(view().name("redirect:/owners/{ownerId}"));
 	}
 	
-	@WithMockUser(value = "spring")
+	@WithMockUser(value = "spring", authorities = "veterinarian")
 	@Test
 	void testProcessCreationFormHasErrors() throws Exception {
 		mockMvc.perform(post("/owners/{ownerId}/pets/{petId}/chips/new", TEST_OWNER_ID, TEST_PET_ID)
@@ -99,7 +99,7 @@ public class ChipControllerTests {
 		.andExpect(view().name("chips/createOrUpdateChipForm"));
 	}
 	
-	@WithMockUser(value = "spring")
+	@WithMockUser(value = "spring", authorities = "veterinarian")
     @Test
     void testInitUpdateForm() throws Exception {
 		mockMvc.perform(get("/owners/{ownerId}/pets/{petId}/chips/{chipId}/edit", TEST_OWNER_ID, TEST_PET_ID, TEST_CHIP_ID))
@@ -111,7 +111,7 @@ public class ChipControllerTests {
 				.andExpect(view().name("chips/createOrUpdateChipForm"));
 	}
 	
-	@WithMockUser(value = "spring")
+	@WithMockUser(value = "spring", authorities = "veterinarian")
 	@Test
 	void testProcessUpdateFormSuccess() throws Exception {
 		mockMvc.perform(post("/owners/{ownerId}/pets/{petId}/chips/{chipId}/edit", TEST_OWNER_ID, TEST_PET_ID, TEST_CHIP_ID)
@@ -123,7 +123,7 @@ public class ChipControllerTests {
 		.andExpect(view().name("redirect:/owners/{ownerId}"));
 	}
 	
-	@WithMockUser(value = "spring")
+	@WithMockUser(value = "spring", authorities = "veterinarian")
 	@Test
 	void testProcessUpdateHasErrors() throws Exception {
 		mockMvc.perform(post("/owners/{ownerId}/pets/{petId}/chips/{chipId}/edit", TEST_OWNER_ID, TEST_PET_ID, TEST_CHIP_ID)
@@ -137,7 +137,7 @@ public class ChipControllerTests {
 		.andExpect(view().name("chips/createOrUpdateChipForm"));
 	}
 
-	@WithMockUser(value = "spring")
+	@WithMockUser(value = "spring", authorities = "veterinarian")
     @Test
 	void testInitShowForm() throws Exception {
 		mockMvc.perform(get("/owners/{ownerId}/pets/{petId}/chips/{chipId}", TEST_OWNER_ID, TEST_PET_ID, TEST_CHIP_ID))
@@ -146,7 +146,7 @@ public class ChipControllerTests {
 		.andExpect(view().name("chips/chipDetails"));
 	}
     
-	@WithMockUser(value = "spring")
+	@WithMockUser(value = "spring", authorities = "veterinarian")
     @Test
 	void testProcessDeleteChipSuccess() throws Exception {
 		mockMvc.perform(get("/owners/{ownerId}/pets/{petId}/chips/{chipId}/delete", TEST_OWNER_ID, TEST_PET_ID, TEST_CHIP_ID))

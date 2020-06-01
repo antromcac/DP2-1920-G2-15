@@ -63,8 +63,8 @@ class ChipPerformence extends Simulation {
 			http("Logged")
 				.post("/login")
 				.headers(headers_3)
-				.formParam("username", "admin1")
-				.formParam("password", "4dm1n")
+				.formParam("username", "vet1")
+				.formParam("password", "v3t")
 				.formParam("_csrf", "${stoken}")
 		).pause(9)
 	}
