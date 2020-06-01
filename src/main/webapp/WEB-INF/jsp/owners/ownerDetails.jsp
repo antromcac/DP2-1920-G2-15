@@ -3,6 +3,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <petclinic:layout pageName="owners">
 
@@ -65,7 +66,9 @@
                             <th>Description</th>
                              <th>Show Chip</th>
                               <th>Update Chip</th>
+                               <sec:authorize access= "hasAuthority('veterinarian')">
                              <th>Disease</th>
+                             </sec:authorize>
                         </tr>
                         </thead>
                         <c:forEach var="visit" items="${pet.visits}">
@@ -89,6 +92,7 @@
                                 </spring:url>
                                 <a href="${fn:escapeXml(visitUrl)}">Add Visit</a>
                             </td>
+                            
                             <c:if test="${pet.chip != null}">
                             	<td>
                                 	<spring:url value="/owners/{ownerId}/pets/{petId}/chips/{chipId}" var="chipUrl">
@@ -116,6 +120,7 @@
                                     <a href="${fn:escapeXml(chipUrl)}">Add Chip</a>
                                 </td>
                             </c:if>
+                            <sec:authorize access= "hasAuthority('veterinarian')">
                             <td>
                                 <spring:url value="/diseases/new/{petId}" var="diseaseUrl">
                                     <spring:param name="diseaseId" value="${disease.id}"/>
@@ -123,7 +128,9 @@
                                 </spring:url>
                                 <a href="${fn:escapeXml(diseaseUrl)}">Add Disease</a>
                           </td>
+                        </sec:authorize>
                         </tr>
+                         
                     </table>
                 </td>
             </tr>
