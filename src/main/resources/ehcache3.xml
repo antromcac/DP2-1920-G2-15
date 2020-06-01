@@ -11,7 +11,7 @@
         <!-- Default cache template -->
         <cache-template name="default">
             <expiry>
-                <ttl unit="seconds">300</ttl>
+                <ttl unit="seconds">120</ttl>
             </expiry>
             <listeners>
                 <listener>
@@ -31,5 +31,10 @@
 	    <cache alias="AllDiseases" uses-template="default">
 	        <key-type>org.springframework.cache.interceptor.SimpleKey</key-type>
 	        <value-type>java.util.Collection</value-type>
-	    </cache>      
+	    </cache>     
+	    
+	    <cache alias="bookings" uses-template="default">
+	        <key-type>org.springframework.cache.interceptor.SimpleKey</key-type>
+	        <value-type>java.lang.Iterable</value-type>
+	    </cache>    
     </config>
