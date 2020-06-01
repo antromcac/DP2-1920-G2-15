@@ -1,0 +1,36 @@
+{
+  "simulation": "dp2.ChipPerformence",
+  "simulationId": "chipperformence",
+  "start": 1591024169011,
+  "description": "",
+  "scenarios": ["Create", "Update", "Show", "Delete"],
+  "assertions": [
+{
+  "path": "Global",
+  "target": "max of response time",
+  "condition": "is less than",
+  "expectedValues": [5000.0],
+  "result": false,
+  "message": "Global: max of response time is less than 5000.0",
+  "actualValue": [60058.0]
+},
+{
+  "path": "Global",
+  "target": "mean of response time",
+  "condition": "is less than",
+  "expectedValues": [5000.0],
+  "result": false,
+  "message": "Global: mean of response time is less than 5000.0",
+  "actualValue": [22269.0]
+},
+{
+  "path": "Global",
+  "target": "percentage of successful events",
+  "condition": "is greater than",
+  "expectedValues": [95.0],
+  "result": false,
+  "message": "Global: percentage of successful events is greater than 95.0",
+  "actualValue": [62.39117647058824]
+}
+  ]
+}
