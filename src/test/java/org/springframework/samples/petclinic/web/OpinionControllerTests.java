@@ -119,17 +119,19 @@ class OpinionControllerTests {
 		itList.add(this.opinion.get());
 		Iterable<Opinion> it = itList;
 		BDDMockito.given(this.opinionService.findAll()).willReturn(it);
-		this.mockMvc.perform(MockMvcRequestBuilders.get("/opinions/list")).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.view().name("/opinions/listOpinions"));
+		this.mockMvc.perform(MockMvcRequestBuilders.get("/opinions/list")).andExpect(MockMvcResultMatchers.model().attribute("opinions", it)).andExpect(MockMvcResultMatchers.status().isOk())
+			.andExpect(MockMvcResultMatchers.view().name("/opinions/listOpinions"));
 	}
 
-	@WithMockUser(value = "spring")
+	@WithMockUser(value = "owner1")
 	@Test
 	void testProcessListFormMine() throws Exception {
 		List<Opinion> itList = new ArrayList<>();
 		itList.add(this.opinion.get());
 		Iterable<Opinion> it = itList;
 		BDDMockito.given(this.opinionService.findAllMine(OpinionControllerTests.TEST_USER_ID)).willReturn(it);
-		this.mockMvc.perform(MockMvcRequestBuilders.get("/opinions/listMine")).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.view().name("/opinions/listOpinions"));
+		this.mockMvc.perform(MockMvcRequestBuilders.get("/opinions/listMine")).andExpect(MockMvcResultMatchers.model().attribute("opinions", it)).andExpect(MockMvcResultMatchers.status().isOk())
+			.andExpect(MockMvcResultMatchers.view().name("/opinions/listOpinions"));
 	}
 
 	@WithMockUser(value = "spring")
