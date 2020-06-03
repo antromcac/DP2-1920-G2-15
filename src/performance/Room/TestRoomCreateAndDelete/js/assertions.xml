@@ -1,0 +1,47 @@
+<testsuite name="dp2.RoomCreateAndDelete" tests="15" errors="0" failures="1" time="0">
+<testcase name="Home: percentage of failed events is less than or equal to 5.0" status="true" time="0">
+  <system-out>Home: percentage of failed events is less than or equal to 5.0</system-out>
+</testcase>
+<testcase name="Login: percentage of failed events is less than or equal to 5.0" status="true" time="0">
+  <system-out>Login: percentage of failed events is less than or equal to 5.0</system-out>
+</testcase>
+<testcase name="Logged: percentage of failed events is less than or equal to 5.0" status="true" time="0">
+  <system-out>Logged: percentage of failed events is less than or equal to 5.0</system-out>
+</testcase>
+<testcase name="Logged Redirect 1: percentage of failed events is less than or equal to 5.0" status="true" time="0">
+  <system-out>Logged Redirect 1: percentage of failed events is less than or equal to 5.0</system-out>
+</testcase>
+<testcase name="RoomList: percentage of failed events is less than or equal to 5.0" status="true" time="0">
+  <system-out>RoomList: percentage of failed events is less than or equal to 5.0</system-out>
+</testcase>
+<testcase name="CreateRoomForm: percentage of failed events is less than or equal to 5.0" status="true" time="0">
+  <system-out>CreateRoomForm: percentage of failed events is less than or equal to 5.0</system-out>
+</testcase>
+<testcase name="DeleteRoom: percentage of failed events is less than or equal to 5.0" status="true" time="0">
+  <system-out>DeleteRoom: percentage of failed events is less than or equal to 5.0</system-out>
+</testcase>
+<testcase name="CreatedRoom: percentage of failed events is less than or equal to 5.0" status="true" time="0">
+  <system-out>CreatedRoom: percentage of failed events is less than or equal to 5.0</system-out>
+</testcase>
+<testcase name="CreatedRoom Redirect 1: percentage of failed events is less than or equal to 5.0" status="true" time="0">
+  <system-out>CreatedRoom Redirect 1: percentage of failed events is less than or equal to 5.0</system-out>
+</testcase>
+<testcase name="DeleteRoom Redirect 1: percentage of failed events is less than or equal to 5.0" status="true" time="0">
+  <system-out>DeleteRoom Redirect 1: percentage of failed events is less than or equal to 5.0</system-out>
+</testcase>
+<testcase name="RoomList Redirect 1: percentage of failed events is less than or equal to 5.0" status="true" time="0">
+  <system-out>RoomList Redirect 1: percentage of failed events is less than or equal to 5.0</system-out>
+</testcase>
+<testcase name="CreateRoomForm Redirect 1: percentage of failed events is less than or equal to 5.0" status="true" time="0">
+  <system-out>CreateRoomForm Redirect 1: percentage of failed events is less than or equal to 5.0</system-out>
+</testcase>
+<testcase name="Global: max of response time is less than 5000.0" status="false" time="0">
+  <failure type="Global">Actual value: 48652.0</failure>
+</testcase>
+<testcase name="Global: mean of response time is less than 5000.0" status="true" time="0">
+  <system-out>Global: mean of response time is less than 5000.0</system-out>
+</testcase>
+<testcase name="Global: percentage of successful events is greater than 95.0" status="true" time="0">
+  <system-out>Global: percentage of successful events is greater than 95.0</system-out>
+</testcase>
+</testsuite>
